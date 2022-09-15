@@ -1,0 +1,35 @@
+<div class="limiter">
+  <div class="container-login">
+    <mat-card>
+      <mat-card-title>{{title}}</mat-card-title>
+      <mat-card-content>
+
+        <form [formGroup]="authForm" class="example-form" novalidate  (ngSubmit)="onSubmit()">
+          <mat-form-field color="accent" class="example-full-width" appearance="fill">
+            <input matInput type="email" placeholder="Email" formControlName="email">
+            <mat-error *ngIf="authForm.controls['email'].invalid && authForm.controls['email'].touched">Email is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field color="accent" class="example-full-width" appearance="fill">
+            <input matInput placeholder="Password" formControlName="password">
+            <mat-error *ngIf="authForm.controls['password'].invalid && authForm.controls['password'].touched">Password is required</mat-error>
+          </mat-form-field>
+
+          <div class="btn-save">
+            <button mat-raised-button [disabled]="!authForm.valid"   type="submit" color="accent">{{title}}</button>
+          </div>
+        </form>
+
+      </mat-card-content>
+      <div class="alternative" *ngIf="title === 'Login'">
+        <p>Don`t have an account?</p>
+        <button mat-raised-button [routerLink]="['/signup']" type="reste">Signup</button>
+      </div>
+      <div class="alternative" *ngIf="title === 'Signup'">
+        <p>Have an account?</p>
+        <button mat-raised-button  [routerLink]="['/login']" type="reste">Login</button>
+      </div>
+
+    </mat-card>
+  </div>
+</div>

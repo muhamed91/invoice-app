@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+  }
+
+.example-container {
+    margin:25px 25px;
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+}
+
+
+
+.menu-bar {
+    position: absolute;
+    right: 30px;
+    color: black;
+    background-color: #ffd740;
+}
+

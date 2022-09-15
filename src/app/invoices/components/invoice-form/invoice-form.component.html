@@ -1,0 +1,56 @@
+<mat-card>
+  <form [formGroup]="invoiceForm" class="example-form" novalidate  (ngSubmit)="onSubmit()">
+      <mat-form-field color="accent" class="example-full-width" appearance="fill">
+        <input matInput placeholder="Item" formControlName="item">
+        <mat-error *ngIf="invoiceForm.controls['item'].invalid && invoiceForm.controls['item'].touched">item is required</mat-error>
+      </mat-form-field>
+
+    <mat-form-field color="accent" class="example-full-width" appearance="fill">
+      <input matInput [matDatepicker]="date" placeholder="Choose a Date" formControlName="date">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="date">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #date></mat-datepicker>
+      <mat-error *ngIf="invoiceForm.controls['date'].invalid && invoiceForm.controls['date'].touched">Date is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field color="accent"class="example-full-width" appearance="fill">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a Duedate" formControlName="due">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="invoiceForm.controls['due'].invalid && invoiceForm.controls['due'].touched">Duedate is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field color="accent" class="example-full-width" appearance="fill">
+      <input matInput placeholder="Qty" type="number" formControlName="qty">
+      <mat-error *ngIf="invoiceForm.controls['qty'].invalid && invoiceForm.controls['qty'].touched">Duedate is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field color="accent" class="example-full-width" appearance="fill">
+      <input matInput placeholder="Tax" type="number" formControlName="tax">
+    </mat-form-field>
+
+    <mat-form-field color="accent" class="example-full-width" appearance="fill">
+      <input matInput placeholder="Rate" type="number" formControlName="rate">
+    </mat-form-field>
+
+    <mat-form-field  appearance="fill">
+      <mat-label>Select Client</mat-label>
+      <mat-select formControlName="client" form>
+        <mat-option *ngFor="let c of clients" [value]="c._id">
+          {{c.firstName}} - {{c.lastName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="btn-save">
+      <button mat-raised-button [disabled]="!invoiceForm.valid"   type="submit" color="accent">Save</button>
+      <button mat-raised-button type="reste" >Cancel</button>
+    </div>
+  </form>
+
+</mat-card>
